@@ -1,5 +1,8 @@
 import BackgroundLayer from "./components/background";
 import Benefit from "./components/Benefits";
+import CalltoAction from "./components/CTA";
+import FAQ from "./components/FAQ";
+import Footer from "./components/footer";
 import Dashboard from "./components/heroilustration";
 import HowItWorks from "./components/howitworks";
 import Maquee from "./components/Maquee";
@@ -35,7 +38,7 @@ export default function HomePage() {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-colors">
+          <button className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 rounded-full font-medium transition-colors">
             Get Started Free Trial
           </button>
           <button className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center gap-2">
@@ -60,6 +63,9 @@ export default function HomePage() {
        < Pricing/>
        < PricingTable/>
        <Benefit/>
+       <FAQ/>
+       <CalltoAction/>
+       <Footer/>
     </main>
   );
 }
