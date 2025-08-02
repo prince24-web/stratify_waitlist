@@ -1,4 +1,5 @@
 import BackgroundLayer from "./components/background";
+import Benefit from "./components/Benefits";
 import Dashboard from "./components/heroilustration";
 import HowItWorks from "./components/howitworks";
 import Maquee from "./components/Maquee";
@@ -58,6 +59,7 @@ export default function HomePage() {
        <WhyHeadSpark/>
        < Pricing/>
        < PricingTable/>
+       <Benefit/>
     </main>
   );
 }
