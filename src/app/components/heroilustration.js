@@ -3,7 +3,7 @@ import React from 'react';
 const Dashboard = () => {
   return (
     <div className="w-full px-4 md:px-0">
-      <div className="relative backdrop-blur-xl bg-white/[0.02] border border-white/[0.08] rounded-3xl p-3 md:p-6 shadow-2xl max-w-7xl mx-auto">
+      <div className="relative bg-black/20 backdrop-blur-md rounded-2xl border border-white/10  rounded-3xl p-3 md:p-6 shadow-2xl max-w-7xl mx-auto">
         
         <div className="relative backdrop-blur-xl bg-white/[0.02] border border-white/[0.08] rounded-3xl p-4 md:p-8 shadow-2xl">
           

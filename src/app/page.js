@@ -3,6 +3,9 @@ import Dashboard from "./components/heroilustration";
 import HowItWorks from "./components/howitworks";
 import Maquee from "./components/Maquee";
 import Navbar from "./components/navbar";
+import Pricing from "./components/pricing";
+import PricingTable from "./components/pricingpage";
+import WhyHeadSpark from "./components/WhyHeadspark";
 
 export default function HomePage() {
   return (
@@ -52,6 +55,9 @@ export default function HomePage() {
         </p>
       </div>
        <HowItWorks/>
+       <WhyHeadSpark/>
+       < Pricing/>
+       < PricingTable/>
     </main>
   );
 }
