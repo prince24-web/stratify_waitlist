@@ -25,7 +25,7 @@ export default function HomePage() {
         </div>
 
         {/* Main heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-5xl sm:text-6xl md:text-5xl font-bold mb-8 leading-tight bg-gradient-to-r from-cyan-100 to-white bg-clip-text text-transparent">
           Generate Tailored Marketing
           <br />
           Plans in Seconds
