@@ -6,22 +6,18 @@ import Navbar from "../components/navbar";
 
 
 // app/marketing-strategy/page.tsx or page.jsx
-export default function BlogPostPage() {
+export default function MarketingStrategyPage() {
   const [productDescription, setProductDescription] = useState('');
   const [productType, setProductType] = useState('Select product type');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const productTypes = [
-    'SaaS Product',
-    'Mobile App',
-    'Physical Product',
-    'Digital Course',
-    'Personal Brand',
-    'info Product',
-    'Other'
+    'Neutral',
+    'Friendly',
+    'Bold',
+    'Professional',
+    'Witty'
   ];
-
-
 
   const handleProductTypeSelect = (type) => {
     setProductType(type);
@@ -32,7 +28,7 @@ export default function BlogPostPage() {
       <Navbar />
       <BackgroundLayer />
     <h1 className="text-4xl sm:text-6xl md:text-5xl font-bold mb-8 leading-tight bg-gradient-to-r from-cyan-100 to-white bg-clip-text text-transparent">
-        Generate your Marketing Strategy
+       Generate an SEO Plan
       </h1>
      <div className="min-h-screen relative overflow-hidden">
 
@@ -43,18 +39,20 @@ export default function BlogPostPage() {
         <div className="w-full max-w-2xl">
           <div className={`backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl transition-all duration-300 ${isDropdownOpen ? 'pb-80' : ''}`}>
             <div className="flex items-center space-x-3 mb-6">
-               <div className="px-5 py-2.5 rounded-full backdrop-blur-lg bg-white/10 border border-cyan-400/20 inline-flex items-center gap-2 mb-6 text-cyan-100 text-base animate-pulse hover:animate-none hover:bg-cyan-400/10 transition-colors">
-  Product Details
-  <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              <div className="px-4 py-2 rounded-full backdrop-blur-lg bg-white/10 border border-cyan-400/20 inline-flex items-center gap-2 mb-6 text-cyan-100 text-sm animate-pulse hover:animate-none hover:bg-cyan-400/10 transition-colors">
+  SEO configuration
+  <svg className="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
   </svg>
 </div>
+
 
 
             </div>
             
             <p className="text-blue-100 mb-8">
-              Tell us about your product and we'll create a tailored marketing strategy
+              Provide your product details and we'll create an SEO-optimized content plan
             </p>
 
             <div className="space-y-6">
@@ -72,14 +70,14 @@ export default function BlogPostPage() {
                   />
                 </div>
                 <p className="text-blue-300/70 text-sm mt-2">
-                  Be clear and concise — describe who it's for, what it does, and why it matters.
+                 Include key benefits, target audience, and unique features for better SEO targeting.
                 </p>
               </div>
 
               {/* Product Type Dropdown */}
               <div className="relative">
                 <label className="block text-white font-medium mb-3">
-                  Type of Product
+                  Tone
                 </label>
                 <div className="relative">
                   <button
@@ -111,7 +109,7 @@ export default function BlogPostPage() {
               {/* Generate Button */}
               <button className="w-full py-4 bg-blue-500  text-white font-semibold rounded-xl hover:blue-600 transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2 shadow-lg">
                 <Sparkles className="w-5 h-5" />
-                <span>Generate Strategy</span>
+                <span>Generate SEO plan</span>
               </button>
             </div>
           </div>
@@ -125,11 +123,11 @@ export default function BlogPostPage() {
             </div>
             
             <h2 className="text-2xl font-bold text-white mb-4">
-              Ready to generate your strategy
+              Ready to optimize your SEO
             </h2>
             
             <p className="text-blue-100 leading-relaxed">
-              Fill out the form and we'll create a comprehensive marketing strategy for you
+             Fill out the form and we'll create a comprehensive SEO plan tailored to your product
             </p>
           </div>
         </div>
