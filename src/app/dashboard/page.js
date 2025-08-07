@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import NewProjectDialog from "@/components/ui/newdialog";
 
 export default function Workspace() {
   const [isOpen, setIsOpen] = useState(true);
@@ -16,7 +17,7 @@ export default function Workspace() {
       >
         <div className="flex items-center justify-between p-4 border-b border-white/10">
           <span className={`font-bold text-lg ${!isOpen && "hidden"}`}>
-            Menu
+            HeadStart 
           </span>
           <button onClick={() => setIsOpen(!isOpen)} className="text-white">
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -25,11 +26,7 @@ export default function Workspace() {
 
         <div className="p-4 space-y-2">
           {/* Main Links */}
-          <SidebarLink
-            label="New Project"
-            icon="/image/new-tab.png"
-            isOpen={isOpen}
-          />
+          <NewProjectDialog/>
           <SidebarLink
             label="Dashboard"
             icon="/image/dashboard.png"
@@ -44,7 +41,7 @@ export default function Workspace() {
           {/* Tools Section */}
           {isOpen && (
             <div className="mt-6">
-              <p className="text-xs text-cyan-400 font-semibold mb-2 uppercase tracking-wide">
+              <p className="text-xs text-[hsl(221.2,83.2%,53.3%)] font-semibold mb-2 uppercase tracking-wide">
                 Tools
               </p>
             </div>
@@ -76,8 +73,6 @@ export default function Workspace() {
       {/* Main Content */}
       <div className="flex-1 p-6">
         {/* Workspace content goes here */}
-        <h1 className="text-2xl font-bold">PrepPal Workspace</h1>
-        <p className="mt-2 text-gray-300">Welcome back 👋</p>
       </div>
     </div>
   );
