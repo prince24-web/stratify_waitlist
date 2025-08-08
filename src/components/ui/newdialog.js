@@ -10,9 +10,7 @@ import {
   DialogTitle,
   DialogClose,
 } from "@/components/ui/dialog";
-import { ChevronDown } from "lucide-react";
-import Image from "next/image";
-
+import { ChevronDown, FilePlus } from "lucide-react";
 
 export default function NewProjectDialog() {
   const [productName, setProductName] = useState("");
@@ -26,7 +24,7 @@ export default function NewProjectDialog() {
     "Friendly",
     "Witty",
     "Casual",
-    "Authoritative"
+    "Authoritative",
   ];
 
   const handleSubmit = () => {
@@ -47,16 +45,9 @@ export default function NewProjectDialog() {
   return (
     <Dialog>
       <DialogTrigger className="px-4 py-2 rounded-md text-white bg-[hsl(221.2,83.2%,53.3%)] hover:bg-[hsl(221.2,83.2%,63.3%)]">
-        <Image
-          src="/image/new-tab.png"
-          alt="New Project Icon"
-          width={20}
-          height={20}
-          className="inline mr-2"
-        />
+        <FilePlus className="w-5 h-5 inline mr-2" />
         New Project
       </DialogTrigger>
-
 
       <DialogContent className="bg-[hsl(240,3.7%,15.9%)] text-white border border-[hsl(240,3.7%,25%)]">
         <DialogHeader>
