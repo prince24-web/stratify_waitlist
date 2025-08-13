@@ -1,5 +1,7 @@
 "use client";
+
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // for navigation
 import { Pencil, Trash2, ArrowRight } from "lucide-react";
 import {
   Dialog,
@@ -14,6 +16,8 @@ import DashboardNav from "../components/dashboard";
 import NewProjectDialog from "@/components/ui/newdialog";
 
 export default function UserDashboard() {
+  const router = useRouter();
+
   const [projects, setProjects] = useState([
     {
       id: 1,
@@ -49,11 +53,11 @@ export default function UserDashboard() {
     setEditProject(null);
   };
 
-  const handleOpen = (id) => {
-    console.log(`Open workspace for project ${id}`);
+  const handleOpen = (projectName) => {
+    // Navigate to /dashboard with project name in query params
+    router.push(`/dashboard?project=${encodeURIComponent(projectName)}`);
   };
 
-  // Filter projects based on search query
   const filteredProjects = projects.filter((project) =>
     project.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -62,7 +66,7 @@ export default function UserDashboard() {
     <div>
       <DashboardNav />
       <div className="min-h-screen bg-[#0f0f0f] text-white p-6">
-        {/* Top Bar with New Project + Search */}
+        {/* Top Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <NewProjectDialog />
           <input
@@ -74,16 +78,20 @@ export default function UserDashboard() {
           />
         </div>
 
-        {/* PROJECT GRID */}
+        {/* Project Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="bg-[#1a1a1a] rounded-xl shadow-lg border border-gray-800 hover:border-gray-700 transition-colors p-5 flex flex-col justify-between relative"
+              onClick={() => handleOpen(project.name)} // ✅ container click navigates
+              className="bg-[#1a1a1a] rounded-xl shadow-lg border border-gray-800 hover:border-gray-700 transition-colors p-5 flex flex-col justify-between relative cursor-pointer"
             >
               {/* Arrow in top-right */}
               <button
-                onClick={() => handleOpen(project.id)}
+                onClick={(e) => {
+                  e.stopPropagation(); // prevent container click
+                  handleOpen(project.name);
+                }}
                 className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
               >
                 <ArrowRight size={18} />
@@ -97,12 +105,16 @@ export default function UserDashboard() {
                 </p>
               </div>
 
+              {/* Edit + Delete */}
               <div className="flex justify-start gap-3 mt-4">
                 {/* Edit */}
                 <Dialog>
                   <DialogTrigger asChild>
                     <button
-                      onClick={() => setEditProject({ ...project })}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditProject({ ...project });
+                      }}
                       className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
                     >
                       <Pencil size={16} />
@@ -177,7 +189,10 @@ export default function UserDashboard() {
 
                 {/* Delete */}
                 <button
-                  onClick={() => handleDelete(project.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(project.id);
+                  }}
                   className="p-2 rounded-lg bg-red-900 hover:bg-red-800 transition-colors"
                 >
                   <Trash2 size={16} />
@@ -186,7 +201,6 @@ export default function UserDashboard() {
             </div>
           ))}
 
-          {/* If no projects match search */}
           {filteredProjects.length === 0 && (
             <p className="text-gray-500 col-span-full text-center">
               No projects found.
