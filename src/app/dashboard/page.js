@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 import { ExpandedTabs } from "@/components/ui/expanded-tabs";
 import { cn } from "@/lib/utils";
+import MarketingStrategy from "../components/pages/marketingStrategy";
+import SEOPlan from "../components/pages/SEOplans";
+import BlogContainer from "../components/pages/Blogpost";
+import ContentCalendar from "../components/pages/ContentCalender";
 
 function Templates() { return <div>📦 Here are your Templates</div>; }
-function SEOPlan() { return <div>🔍 SEO Plan section</div>; }
-function MarketingStrategy() { return <div>📈 Marketing Strategy</div>; }
-function BlogPosts() { return <div>📝 Blog Posts</div>; }
-function ContentCalendar() { return <div>📅 Content Calendar</div>; }
 
 export default function Workspace() {
   const searchParams = useSearchParams();
@@ -32,10 +32,10 @@ export default function Workspace() {
   const renderContent = () => {
     switch (activeSection) {
       case "Templates": return <Templates />;
-      case "Marketing Strategy": return <MarketingStrategy />;
-      case "SEO Plan": return <SEOPlan />;
-      case "Blog Posts": return <BlogPosts />;
-      case "Content Calendar": return <ContentCalendar />;
+      case "Marketing Strategy": return <MarketingStrategy/>;
+      case "SEO Plan": return <SEOPlan/>;
+      case "Blog Posts": return <BlogContainer/>;
+      case "Content Calendar": return <ContentCalendar/>;
       default: return <div>🔧 Select a section</div>;
     }
   };
