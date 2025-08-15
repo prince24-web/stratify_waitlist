@@ -41,9 +41,15 @@ export default function Workspace() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#0f0f0f] text-white">
-      {/* Sidebar */}
-      <div className={`transition-all duration-300 ${isOpen ? "w-64" : "w-16"} bg-[#1a1a1a] border-r border-gray-800`}>
+    <div className="flex h-screen bg-[#0f0f0f] text-white overflow-hidden">
+      {/* Sidebar (fixed) */}
+      <div
+        className={cn(
+          "flex-shrink-0 h-screen overflow-y-auto bg-[#1a1a1a] border-r border-gray-800 transition-all duration-300",
+          isOpen ? "w-64" : "w-16",
+          "sticky top-0"
+        )}
+      >
         <div className="flex items-center justify-between p-4 border-b border-gray-800">
           <span className={`font-bold text-lg ${!isOpen && "hidden"}`}>HeadStart</span>
           <button onClick={() => setIsOpen(!isOpen)} className="text-gray-300">
@@ -72,9 +78,9 @@ export default function Workspace() {
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col bg-[#0f0f0f] text-white">
-        <nav className="w-full bg-[#0f0f0f] border-b border-gray-800 text-white px-6 py-2 flex items-center justify-between shadow">
+      {/* Main Content (scrollable) */}
+      <div className="flex-1 flex flex-col h-screen overflow-y-auto">
+        <nav className="w-full bg-[#0f0f0f] border-b border-gray-800 text-white px-6 py-2 flex items-center justify-between shadow sticky top-0 z-10">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <Box className="w-5 h-5 text-gray-300" />
@@ -97,6 +103,7 @@ export default function Workspace() {
             />
           </div>
         </nav>
+
         <div className="flex-1 p-6">{renderContent()}</div>
       </div>
     </div>
