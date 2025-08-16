@@ -1,78 +1,145 @@
-"use client";
-import { useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Copy, Pencil } from "lucide-react";
+"use client"
 
-const initialPosts = [
+import * as React from "react"
+import {
+  useReactTable,
+  getCoreRowModel,
+  getSortedRowModel,
+  getFilteredRowModel,
+  flexRender,
+} from "@tanstack/react-table"
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+// Mock data
+const defaultData = [
+  { date: "2025-08-17", content: "🔥 Ragebait dev post", category: "Engagement", status: "Scheduled" },
+  { date: "2025-08-18", content: "📊 Build-in-public update", category: "Transparency", status: "Draft" },
+  { date: "2025-08-19", content: "💡 Developer tip", category: "Value", status: "Published" },
+  { date: "2025-08-20", content: "⚡ Meme on startup life", category: "Fun", status: "Scheduled" },
+]
+
+// Column definitions (no types)
+const columns = [
   {
-    date: "2025-08-15",
-    title: "Why Great Marketing Won't Save a Bad Product",
-    platform: "X",
-    status: "Planned",
-    content:
-      "Marketing matters. But if your app is trash, no ad campaign will save it. Great product + great marketing = growth.",
+    accessorKey: "date",
+    header: "Date",
+    cell: ({ row }) => <div>{row.getValue("date")}</div>,
   },
   {
-    date: "2025-08-17",
-    title: "The Founder’s Wake-Up Call",
-    platform: "X",
-    status: "Draft",
-    content:
-      "As a founder, I learned the hard way: Good ideas don’t sell themselves. You need marketing.",
+    accessorKey: "content",
+    header: "Content",
+    cell: ({ row }) => (
+      <div className="max-w-xs truncate">{row.getValue("content")}</div>
+    ),
   },
-];
+  {
+    accessorKey: "category",
+    header: "Category",
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }) => {
+      const status = row.getValue("status")
+      return (
+        <span
+          className={`px-2 py-1 rounded-full text-xs ${
+            status === "Published"
+              ? "bg-green-500/20 text-green-400"
+              : status === "Scheduled"
+              ? "bg-yellow-500/20 text-yellow-400"
+              : "bg-gray-500/20 text-gray-400"
+          }`}
+        >
+          {status}
+        </span>
+      )
+    },
+  },
+]
 
-export default function ContentCalendar() {
-  const [posts, setPosts] = useState(initialPosts);
+export default function ContentCalendarGrid() {
+  const [data] = React.useState(() => [...defaultData])
+  const [sorting, setSorting] = React.useState([])
+  const [filtering, setFiltering] = React.useState("")
 
-  const handleCopy = (content) => {
-    navigator.clipboard.writeText(content);
-    alert("Post copied to clipboard!");
-  };
-
-  const handleEdit = (index) => {
-    const newContent = prompt("Edit post content:", posts[index].content);
-    if (newContent !== null) {
-      const updatedPosts = [...posts];
-      updatedPosts[index].content = newContent;
-      setPosts(updatedPosts);
-    }
-  };
+  const table = useReactTable({
+    data,
+    columns,
+    state: {
+      sorting,
+      globalFilter: filtering,
+    },
+    onSortingChange: setSorting,
+    onGlobalFilterChange: setFiltering,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+  })
 
   return (
-    <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-      {posts.map((post, index) => (
-        <Card
-          key={index}
-          className="bg-[#1a1a1a] border border-gray-800 rounded-xl shadow-md"
-        >
-          <CardHeader>
-            <CardTitle className="text-lg font-semibold text-white">
-              {post.title}
-            </CardTitle>
-            <p className="text-gray-400 text-xs">
-              {post.date} • {post.platform} • {post.status}
-            </p>
-          </CardHeader>
-          <CardContent>
-            <p className="text-gray-300 text-sm mb-4">{post.content}</p>
-            <div className="flex gap-2">
-              <button
-                onClick={() => handleCopy(post.content)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
-              >
-                <Copy className="w-4 h-4" /> Copy
-              </button>
-              <button
-                onClick={() => handleEdit(index)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-500"
-              >
-                <Pencil className="w-4 h-4" /> Edit
-              </button>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
+    <div className="space-y-4">
+      {/* Search */}
+      <input
+        type="text"
+        placeholder="Search posts..."
+        value={filtering ?? ""}
+        onChange={(e) => setFiltering(e.target.value)}
+        className="px-3 py-2 rounded-md border border-gray-700 bg-transparent text-sm"
+      />
+
+      {/* Table */}
+      <div className="rounded-md border border-gray-700 overflow-hidden">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead
+                    key={header.id}
+                    className="cursor-pointer select-none"
+                    onClick={header.column.getToggleSortingHandler()}
+                  >
+                    {flexRender(header.column.columnDef.header, header.getContext())}
+                    {{
+                      asc: " 🔼",
+                      desc: " 🔽",
+                    }[header.column.getIsSorted()] ?? null}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} className="text-center">
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
     </div>
-  );
+  )
 }
