@@ -28,7 +28,8 @@ export default function LoginPage() {
             if (isLogin) {
                 // 🔑 Login
                 const res = await APIService.auth.login(email, password);
-                localStorage.setItem("token", res.token); // store token
+                localStorage.setItem("token", res.session.access_token); // store token
+
                 router.push("/userDash"); // ✅ redirect after login
             } else {
                 // 🆕 Register
@@ -40,8 +41,7 @@ export default function LoginPage() {
                     password,
                     fullName
                 );
-                localStorage.setItem("token", res.token);
-                router.push("/userDash");
+                setIsLogin(true);
             }
         } catch (err) {
             setError(err.message || "Something went wrong");

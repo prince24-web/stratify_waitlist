@@ -67,7 +67,7 @@ const APIService = {
     },
 
     // CRUD
-    personas: crudFactory("personas"),
+    personas: crudFactory("product-persona"),
     seoPlans: crudFactory("seo-plans"),
     strategies: crudFactory("strategies"),
     blogs: crudFactory("blogs"),
