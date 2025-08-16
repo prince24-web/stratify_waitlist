@@ -16,9 +16,13 @@ export default function SEOPlan({ persona }) {
             try {
                 setLoading(true);
                 const res = await APIService.seoPlans.searchAll({
-                    personaId: persona._id,
+                    filter: {
+                        op: "eq",
+                        column: "persona_id",
+                        value: persona.id,
+                    },
                 });
-                setMetadata(res.data.seo || []);
+                setMetadata(res.data.seoPlans || []);
             } catch (err) {
                 console.error("Error fetching SEO plan:", err);
             } finally {
@@ -30,7 +34,7 @@ export default function SEOPlan({ persona }) {
 
     const handleCopy = (meta) => {
         navigator.clipboard.writeText(
-            `Title: ${meta.title}\nDescription: ${meta.description}`
+            `Title: ${meta.seo_plan_json.meta_title}\nDescription: ${meta.seo_plan_json.meta_description}`
         );
     };
 
@@ -81,7 +85,9 @@ export default function SEOPlan({ persona }) {
                                     <>
                                         Title:{" "}
                                         <input
-                                            value={meta.title}
+                                            value={
+                                                meta.seo_plan_json.meta_title
+                                            }
                                             onChange={(e) =>
                                                 handleEditChange(
                                                     "title",
@@ -94,7 +100,10 @@ export default function SEOPlan({ persona }) {
                                         {"\n"}
                                         Description:{" "}
                                         <input
-                                            value={meta.description}
+                                            value={
+                                                meta.seo_plan_json
+                                                    .meta_description
+                                            }
                                             onChange={(e) =>
                                                 handleEditChange(
                                                     "description",
@@ -106,7 +115,7 @@ export default function SEOPlan({ persona }) {
                                         />
                                     </>
                                 ) : (
-                                    `Title: ${meta.title}\nDescription: ${meta.description}`
+                                    `Title: ${meta.seo_plan_json.meta_title}\nDescription: ${meta.seo_plan_json.meta_description}`
                                 )}
                             </code>
                         </pre>
