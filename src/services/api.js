@@ -41,7 +41,8 @@ async function request(
 // CRUD factory
 function crudFactory(resource) {
     return {
-        getAll: (options) => request(`/${resource}`, "GET", options),
+        getAll: () => request(`/${resource}`, "GET"),
+        searchAll: (options) => request(`/${resource}/search`, "POST", options),
         getOne: (id) => request(`/${resource}/${id}`),
         create: (payload) => request(`/${resource}`, "POST", payload),
         update: (id, payload) =>
@@ -70,8 +71,8 @@ const APIService = {
     personas: crudFactory("product-persona"),
     seoPlans: crudFactory("seo-plans"),
     strategies: crudFactory("strategies"),
-    blogs: crudFactory("blogs"),
-    posts: crudFactory("posts"),
+    blogs: crudFactory("blog-posts"),
+    posts: crudFactory("platform-posts"),
 
     // AI generation endpoints
     generate: {

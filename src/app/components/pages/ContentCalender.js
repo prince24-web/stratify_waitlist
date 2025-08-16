@@ -29,10 +29,11 @@ export default function ContentCalendarGrid({ persona }) {
         if (!persona) return;
         const fetchCalendar = async () => {
             try {
-                const res = await APIService.calendars.getAll({
+                const res = await APIService.posts.searchAll({
                     personaId: persona._id,
                 });
-                setData(res.data.calendars || []);
+                console.log(res);
+                setData(res.data.posts || []);
             } catch (err) {
                 console.error("Error fetching calendar:", err);
             }

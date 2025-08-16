@@ -14,7 +14,7 @@ export default function BlogPost({ persona }) {
         if (!persona) return;
         const fetchBlog = async () => {
             try {
-                const res = await APIService.blogs.getAll({
+                const res = await APIService.blogs.searchAll({
                     personaId: persona._id,
                 });
                 const blogs = res.data.blogs || [];

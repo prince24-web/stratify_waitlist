@@ -10,7 +10,7 @@ export default function MarketingStrategyDisplay({ persona }) {
         if (!persona) return;
         const fetchStrategies = async () => {
             try {
-                const res = await APIService.strategies.getAll({
+                const res = await APIService.strategies.searchAll({
                     personaId: persona._id,
                 });
                 setStrategies(res.data.strategies || []);

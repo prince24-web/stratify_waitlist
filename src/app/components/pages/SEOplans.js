@@ -15,7 +15,7 @@ export default function SEOPlan({ persona }) {
         const fetchSEO = async () => {
             try {
                 setLoading(true);
-                const res = await APIService.seo.getAll({
+                const res = await APIService.seoPlans.searchAll({
                     personaId: persona._id,
                 });
                 setMetadata(res.data.seo || []);
