@@ -2,12 +2,49 @@
 
 import { useState } from "react";
 import { Brain, Eye, EyeOff, Loader2 } from "lucide-react";
+import APIService from "@/services/api"; // ✅ adjust path based on your folder structure
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const router = useRouter();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
+    try {
+      if (isLogin) {
+        // 🔑 Login
+        const res = await APIService.auth.login(email, password);
+        localStorage.setItem("token", res.token); // store token
+        router.push("/userDash"); // ✅ redirect after login
+      } else {
+        // 🆕 Register
+        if (password !== confirmPassword) {
+          throw new Error("Passwords do not match");
+        }
+        const res = await APIService.auth.register(email, password, fullName);
+        localStorage.setItem("token", res.token);
+        router.push("/userDash");
+      }
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-black flex items-center justify-center p-4">
@@ -15,7 +52,7 @@ export default function LoginPage() {
         {/* Branding */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
-          
+            <Brain className="w-10 h-10 text-blue-500" />
           </div>
         </div>
 
@@ -56,19 +93,17 @@ export default function LoginPage() {
             </button>
           </div>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name (Sign Up only) */}
             {!isLogin && (
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-slate-300 mb-2"
-                >
+                <label className="block text-sm font-medium text-slate-300 mb-2">
                   Full Name
                 </label>
                 <input
                   type="text"
-                  id="name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   placeholder="Enter your full name"
                   className="w-full px-4 py-3 rounded-lg bg-black/30 text-white border border-white/20 placeholder-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"
                 />
@@ -77,15 +112,13 @@ export default function LoginPage() {
 
             {/* Email */}
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-slate-300 mb-2"
-              >
+              <label className="block text-sm font-medium text-slate-300 mb-2">
                 Email Address
               </label>
               <input
                 type="email"
-                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 rounded-lg bg-black/30 text-white border border-white/20 placeholder-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"
               />
@@ -93,16 +126,14 @@ export default function LoginPage() {
 
             {/* Password */}
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-slate-300 mb-2"
-              >
+              <label className="block text-sm font-medium text-slate-300 mb-2">
                 Password
               </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   className="w-full px-4 py-3 pr-12 rounded-lg bg-black/30 text-white border border-white/20 placeholder-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"
                 />
@@ -119,16 +150,14 @@ export default function LoginPage() {
             {/* Confirm Password (Sign Up only) */}
             {!isLogin && (
               <div>
-                <label
-                  htmlFor="confirmPassword"
-                  className="block text-sm font-medium text-slate-300 mb-2"
-                >
+                <label className="block text-sm font-medium text-slate-300 mb-2">
                   Confirm Password
                 </label>
                 <div className="relative">
                   <input
                     type={showConfirmPassword ? "text" : "password"}
-                    id="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Confirm your password"
                     className="w-full px-4 py-3 pr-12 rounded-lg bg-black/30 text-white border border-white/20 placeholder-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"
                   />
@@ -147,16 +176,9 @@ export default function LoginPage() {
               </div>
             )}
 
-            {/* Forgot password link */}
-            {isLogin && (
-              <div className="text-right">
-                <button
-                  type="button"
-                  className="text-sm text-blue-500 hover:text-blue-400 font-medium"
-                >
-                  Forgot password?
-                </button>
-              </div>
+            {/* Error message */}
+            {error && (
+              <p className="text-red-400 text-sm text-center">{error}</p>
             )}
 
             {/* Submit */}
@@ -177,19 +199,6 @@ export default function LoginPage() {
               )}
             </button>
           </form>
-
-          {/* Switch */}
-          <div className="mt-6 text-center">
-            <p className="text-slate-400">
-              {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-              <button
-                onClick={() => setIsLogin(!isLogin)}
-                className="text-blue-500 hover:text-blue-400 font-medium"
-              >
-                {isLogin ? "Sign up" : "Sign in"}
-              </button>
-            </p>
-          </div>
         </div>
       </div>
     </div>
