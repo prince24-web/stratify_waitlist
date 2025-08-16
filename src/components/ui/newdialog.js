@@ -11,17 +11,35 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { FilePlus } from "lucide-react";
+import APIService from "@/services/api";
 
 export default function NewProjectDialog() {
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = () => {
-    const data = {
-      productName,
-      description,
-    };
-    console.log("Collected data:", data);
+  const handleSubmit = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      // map frontend fields -> backend fields
+      const response = await APIService.personas.create({
+        title: productName,
+        detailed_description: description,
+      });
+
+      console.log("Created successfully:", response);
+
+      // reset form after success
+      setProductName("");
+      setDescription("");
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong while creating the project.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -62,20 +80,29 @@ export default function NewProjectDialog() {
               placeholder="What does your product do?"
             />
           </div>
+
+          {error && <p className="text-red-500 text-sm">{error}</p>}
         </div>
 
         <DialogFooter className="mt-6">
           <DialogClose asChild>
-            <button className="px-4 py-2 rounded-md bg-gray-700 text-white hover:bg-gray-600">
+            <button
+              className="px-4 py-2 rounded-md bg-gray-700 text-white hover:bg-gray-600"
+              disabled={loading}
+            >
               Cancel
             </button>
           </DialogClose>
+          <DialogClose asChild>
           <button
             onClick={handleSubmit}
-            className="px-4 py-2 rounded-md text-white bg-[hsl(221.2,83.2%,53.3%)] hover:bg-[hsl(221.2,83.2%,63.3%)] "
+            className="px-4 py-2 rounded-md text-white bg-[hsl(221.2,83.2%,53.3%)] hover:bg-[hsl(221.2,83.2%,63.3%)]"
+            disabled={loading}
           >
-            Create
+            {loading ? "Creating..." : "Create"}
           </button>
+        </DialogClose>
+
         </DialogFooter>
       </DialogContent>
     </Dialog>
