@@ -11,7 +11,11 @@ export default function MarketingStrategyDisplay({ persona }) {
         const fetchStrategies = async () => {
             try {
                 const res = await APIService.strategies.searchAll({
-                    personaId: persona._id,
+                    filter: {
+                        op: "eq",
+                        table: "persona_id",
+                        value: persona.id,
+                    },
                 });
                 setStrategies(res.data.strategies || []);
             } catch (err) {
@@ -33,15 +37,21 @@ export default function MarketingStrategyDisplay({ persona }) {
                 >
                     <CardHeader>
                         <CardTitle className="text-lg font-semibold text-white">
-                            {item.title}
+                            {item.strategy_json.audience}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <p className="text-gray-400 text-sm mb-3">
-                            {item.description}
+                            {item.strategy_json.unique_value}
                         </p>
                         <p className="text-gray-300 text-sm italic">
-                            {item.example}
+                            <ul>
+                                {item.strategy_json.main_content_ideas.map(
+                                    (x) => (
+                                        <li key={x}>{x}</li>
+                                    )
+                                )}
+                            </ul>
                         </p>
                     </CardContent>
                 </Card>
