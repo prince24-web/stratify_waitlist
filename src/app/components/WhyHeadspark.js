@@ -1,3 +1,9 @@
+"use client";
+
+import CardStackExample from "@/components/kokonutui/card-stack";
+
+// adjust path
+
 export default function WhyHeadSpark() {
   return (
     <div>
@@ -5,8 +11,18 @@ export default function WhyHeadSpark() {
         {/* Badge */}
         <div className="px-4 py-2 rounded-full backdrop-blur-lg bg-white/10 border border-cyan-400/20 inline-flex items-center gap-2 mb-6 text-cyan-100 text-sm animate-pulse hover:animate-none hover:bg-cyan-400/10 transition-colors">
           Master Modern AI Solution
-          <svg className="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <svg
+            className="w-4 h-4 text-cyan-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            />
           </svg>
         </div>
 
@@ -14,7 +30,8 @@ export default function WhyHeadSpark() {
           Why Choose HeadSpark?
         </h1>
         <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-          Everything you need to create professional marketing strategies and content that converts.
+          Everything you need to create professional marketing strategies and
+          content that converts.
         </p>
       </div>
 
@@ -22,16 +39,17 @@ export default function WhyHeadSpark() {
       <div className="px-4">
         <div className="w-full max-w-7xl mx-auto backdrop-blur-sm bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between min-h-[28rem] gap-6">
           {/* Left Side */}
-          <div className="w-full md:w-1/2 h-64 md:h-full flex items-center justify-center">
-            <div className="w-64 h-64 bg-white/10 rounded-xl border border-white/20" />
+          <div className="w-full md:w-1/2 flex items-center justify-center">
+            <CardStackExample />
           </div>
 
           {/* Right Side */}
           <div className="w-full md:w-1/2 text-white space-y-4">
             <h2 className="text-3xl font-bold">AI-Powered Content Creation</h2>
             <p className="text-sm md:text-base text-white/80">
-              Generate high-quality, tailored content in seconds. Whether you're a marketer, writer, or business owner,
-              our AI tools help you save time and boost productivity with minimal effort.
+              Generate high-quality, tailored content in seconds. Whether you're
+              a marketer, writer, or business owner, our AI tools help you save
+              time and boost productivity with minimal effort.
             </p>
             <ul className="list-disc list-inside text-sm md:text-base space-y-1 text-white/70">
               <li>Blog post generation</li>

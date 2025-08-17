@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Pencil, Trash2, ArrowRight } from "lucide-react";
+import { Pencil, Trash2, ArrowRight, Loader } from "lucide-react";
 import {
     Dialog,
     DialogTrigger,
@@ -15,6 +15,7 @@ import {
 import DashboardNav from "../components/dashboard";
 import NewProjectDialog from "@/components/ui/newdialog";
 import APIService from "@/services/api";
+import LoaderSpiner from "../components/mainloader";
 
 export default function UserDashboard() {
     const router = useRouter();
@@ -92,11 +93,12 @@ export default function UserDashboard() {
                 </div>
 
                 {/* Loader */}
-                {loading && (
-                    <p className="text-gray-500 text-center">
-                        Loading projects...
-                    </p>
-                )}
+               {loading && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+                <LoaderSpiner />
+                 </div>
+                    )}
+
 
                 {/* Project Grid */}
                 {!loading && (
