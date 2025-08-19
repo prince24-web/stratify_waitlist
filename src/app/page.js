@@ -10,6 +10,8 @@ import Navbar from "./components/navbar";
 import Pricing from "./components/pricing";
 import PricingTable from "./components/pricingpage";
 import WhyHeadSpark from "./components/WhyHeadspark";
+import BentoGrid from "./components/kokonutui/bento-grid"
+
 
 export default function HomePage() {
   return (
@@ -30,7 +32,7 @@ export default function HomePage() {
           <br />
           Plans in Seconds
         </h1>
-
+    
         {/* Subtext */}
         <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
           Transform your product description into comprehensive marketing strategies and cross-platform content with our AI agent.
@@ -50,7 +52,7 @@ export default function HomePage() {
 
       {/* Dashboard Illustration */}
       <div className="z-10 flex justify-center mt-10 w-full px-4">
-        <Dashboard />
+        <BentoGrid/>
       </div>
       {/* Footer Text */}
       <div className="z-10 flex justify-center mt-12 w-full px-4">

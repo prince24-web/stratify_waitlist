@@ -1,8 +1,8 @@
 "use client";
 
-import CardStackExample from "@/components/kokonutui/card-stack";
 
-// adjust path
+
+
 
 export default function WhyHeadSpark() {
   return (
@@ -40,7 +40,7 @@ export default function WhyHeadSpark() {
         <div className="w-full max-w-7xl mx-auto backdrop-blur-sm bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between min-h-[28rem] gap-6">
           {/* Left Side */}
           <div className="w-full md:w-1/2 flex items-center justify-center">
-            <CardStackExample />
+            
           </div>
 
           {/* Right Side */}
