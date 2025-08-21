@@ -5,6 +5,7 @@ import Loader from "../Loader";
 import KeywordTable from "../CustomTable";
 import APIService from "../../../services/api";
 import  SeoPlanBoard from "../SEO_content"
+import SeoPlanBoardDesc from "../SEO_details" 
 
 export default function SEOPlan({ persona }) {
     const [loading, setLoading] = useState(false);
@@ -59,6 +60,7 @@ export default function SEOPlan({ persona }) {
             </h1>
             <div className="space-y-6">
            <SeoPlanBoard/>
+           <SeoPlanBoardDesc/>
             </div>
         </div>
     );

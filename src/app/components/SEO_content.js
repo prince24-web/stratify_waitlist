@@ -9,6 +9,7 @@ import {
   KanbanProvider,
 } from '../../components/ui/kibo-ui/kanban'; 
 import { ScrollArea, ScrollBar } from '../../components/ui/scroll-area';
+import ButtonCopy from "../../components/ButtonCopy"
 
 
 // New SEO-focused columns
@@ -55,7 +56,7 @@ export default function SeoPlanBoard() {
           <ScrollArea className="h-[400px] pr-2">
             <KanbanCards id={column.id}>
               {(item) => (
-                <KanbanCard key={item.id} id={item.id} name={item.name} />
+                <KanbanCard key={item.id} id={item.id} name={item.name} /> 
               )}
             </KanbanCards>
             <ScrollBar orientation="vertical" />
