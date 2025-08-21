@@ -15,9 +15,9 @@ import { CSS } from '@dnd-kit/utilities';
 import { createContext, useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
 import tunnel from 'tunnel-rat';
-import { Card } from '@/components/ui/card';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { cn } from '@/lib/utils';
+import { Card } from '../../card';
+import { ScrollArea, ScrollBar } from '../../scroll-area';
+import { cn } from '../../../../lib/utils';
 
 const t = tunnel();
 

@@ -4,6 +4,7 @@ import { Copy, Edit2, Save } from "lucide-react";
 import Loader from "../Loader";
 import KeywordTable from "../CustomTable";
 import APIService from "../../../services/api";
+import  SeoPlanBoard from "../SEO_content"
 
 export default function SEOPlan({ persona }) {
     const [loading, setLoading] = useState(false);
@@ -57,71 +58,7 @@ export default function SEOPlan({ persona }) {
                 Your SEO Plan
             </h1>
             <div className="space-y-6">
-                {metadata.map((meta, index) => (
-                    <div key={index} className="relative">
-                        <div className="absolute top-2 right-2 flex gap-2">
-                            {editingIndex === index ? (
-                                <Save
-                                    size={16}
-                                    className="cursor-pointer text-green-500 hover:text-green-400"
-                                    onClick={handleSave}
-                                />
-                            ) : (
-                                <Edit2
-                                    size={16}
-                                    className="cursor-pointer text-gray-400 hover:text-gray-300"
-                                    onClick={() => setEditingIndex(index)}
-                                />
-                            )}
-                            <Copy
-                                size={16}
-                                className="cursor-pointer text-gray-400 hover:text-gray-300"
-                                onClick={() => handleCopy(meta)}
-                            />
-                        </div>
-                        <pre className="bg-[#1a1a1a] p-4 rounded-lg overflow-x-auto border border-[#2d2d2d]">
-                            <code>
-                                {editingIndex === index ? (
-                                    <>
-                                        Title:{" "}
-                                        <input
-                                            value={
-                                                meta.seo_plan_json.meta_title
-                                            }
-                                            onChange={(e) =>
-                                                handleEditChange(
-                                                    "title",
-                                                    e.target.value,
-                                                    index
-                                                )
-                                            }
-                                            className="bg-transparent border-b border-gray-500 outline-none text-white"
-                                        />
-                                        {"\n"}
-                                        Description:{" "}
-                                        <input
-                                            value={
-                                                meta.seo_plan_json
-                                                    .meta_description
-                                            }
-                                            onChange={(e) =>
-                                                handleEditChange(
-                                                    "description",
-                                                    e.target.value,
-                                                    index
-                                                )
-                                            }
-                                            className="bg-transparent border-b border-gray-500 outline-none text-white"
-                                        />
-                                    </>
-                                ) : (
-                                    `Title: ${meta.seo_plan_json.meta_title}\nDescription: ${meta.seo_plan_json.meta_description}`
-                                )}
-                            </code>
-                        </pre>
-                    </div>
-                ))}
-                <KeywordTable />
+           <SeoPlanBoard/>
             </div>
         </div>
     );
