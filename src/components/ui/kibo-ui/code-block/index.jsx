@@ -86,15 +86,15 @@ import {
   useState,
 } from 'react';
 import { codeToHtml } from 'shiki';
-import { Button } from '@/components/ui/button';
+import { Button } from '../../button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { cn } from '@/lib/utils';
+} from '../../select';
+import { cn } from '../../../../lib/utils';
 
 const filenameIconMap = {
   '.env': SiDotenv,
