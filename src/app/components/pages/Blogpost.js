@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "../../../components/ui/card";
 import { Copy, Pencil } from "lucide-react";
-import APIService from "@/services/api";
+import APIService from "../../../services/api";
 
 export default function BlogPost({ persona }) {
     const [isEditing, setIsEditing] = useState(false);

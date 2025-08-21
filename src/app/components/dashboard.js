@@ -1,4 +1,4 @@
-import { ExpandedTabs } from "@/components/ui/expanded-tabs";
+import { ExpandedTabs } from "../../components/ui/expanded-tabs";
 import {
   Menu,
   X,

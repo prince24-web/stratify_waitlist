@@ -9,9 +9,9 @@ import {
   DialogFooter,
   DialogTitle,
   DialogClose,
-} from "@/components/ui/dialog";
+} from "../ui/dialog";
 import { FilePlus } from "lucide-react";
-import APIService from "@/services/api";
+import APIService from "../../services/api";
 
 export default function NewProjectDialog() {
   const [productName, setProductName] = useState("");

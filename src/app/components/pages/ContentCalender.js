@@ -16,10 +16,9 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table";
+} from "../../../components/ui/table";
 
-import APIService from "@/services/api";
-
+import APIService from "../../../services/api";
 export default function ContentCalendarGrid({ persona }) {
     const [data, setData] = React.useState([]);
     const [sorting, setSorting] = React.useState([]);

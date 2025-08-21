@@ -11,10 +11,10 @@ import {
     DialogTitle,
     DialogFooter,
     DialogClose,
-} from "@/components/ui/dialog";
+} from "../../components/ui/dialog";
 import DashboardNav from "../components/dashboard";
-import NewProjectDialog from "@/components/ui/newdialog";
-import APIService from "@/services/api";
+import NewProjectDialog from "../../components/ui/newdialog";
+import APIService from "../../services/api";
 import LoaderSpiner from "../components/mainloader";
 
 export default function UserDashboard() {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Brain, Eye, EyeOff, Loader2 } from "lucide-react";
-import APIService from "@/services/api"; // ✅ adjust path based on your folder structure
+import APIService from "../../services/api"; // ✅ adjust path based on your folder structure
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {

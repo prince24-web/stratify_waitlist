@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useMotionTemplate, useMotionValue } from "motion/react";
 import Balancer from "react-wrap-balancer"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 function FeatureCard({
   title,

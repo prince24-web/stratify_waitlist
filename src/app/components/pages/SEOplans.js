@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Copy, Edit2, Save } from "lucide-react";
 import Loader from "../Loader";
 import KeywordTable from "../CustomTable";
-import APIService from "@/services/api";
+import APIService from "../../../services/api";
 
 export default function SEOPlan({ persona }) {
     const [loading, setLoading] = useState(false);

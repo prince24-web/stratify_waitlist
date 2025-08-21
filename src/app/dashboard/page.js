@@ -18,13 +18,13 @@ import {
     Boxes,
     Box,
 } from "lucide-react";
-import { ExpandedTabs } from "@/components/ui/expanded-tabs";
-import { cn } from "@/lib/utils";
+import { ExpandedTabs } from "../../components/ui/expanded-tabs";
+import { cn } from "../../lib/utils";
 import MarketingStrategy from "../components/pages/marketingStrategy";
 import SEOPlan from "../components/pages/SEOplans";
 import BlogContainer from "../components/pages/Blogpost";
 import ContentCalendar from "../components/pages/ContentCalender";
-import APIService from "@/services/api";
+import APIService from "../../services/api";
 
 function Templates() {
     return <div>📦 Here are your Templates</div>;

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import APIService from "@/services/api";
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
+import APIService from "../../../services/api";
 
 export default function MarketingStrategyDisplay({ persona }) {
     const [strategies, setStrategies] = useState([]);
