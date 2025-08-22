@@ -1,135 +1,41 @@
-"use client"
+'use client'
 import React from 'react';
 import styled from 'styled-components';
 
-const Loader = () => {
+const Loading = () => {
   return (
     <StyledWrapper>
-      <div className="loader-wrapper">
-        <span className="loader-letter">G</span>
-        <span className="loader-letter">e</span>
-        <span className="loader-letter">n</span>
-        <span className="loader-letter">e</span>
-        <span className="loader-letter">r</span>
-        <span className="loader-letter">a</span>
-        <span className="loader-letter">t</span>
-        <span className="loader-letter">i</span>
-        <span className="loader-letter">n</span>
-        <span className="loader-letter">g</span>
-        <div className="loader" />
-      </div>
+      <div className="loader" />
     </StyledWrapper>
   );
 }
 
 const StyledWrapper = styled.div`
-  .loader-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-    height: 180px;
-    font-family: "Inter", sans-serif;
-    font-size: 1.2em;
-    font-weight: 300;
-    color: white;
-    border-radius: 50%;
-    background-color: transparent;
-    user-select: none;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;  /* full screen */
+  width: 100%;
 
   .loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background-color: transparent;
-    animation: loader-rotate 2s linear infinite;
-    z-index: 0;
+    width: 45px;
+    height: 40px;
+    background: linear-gradient(#0000 calc(1*100%/6),#fff 0 calc(3*100%/6),#0000 0),
+                linear-gradient(#0000 calc(2*100%/6),#fff 0 calc(4*100%/6),#0000 0),
+                linear-gradient(#0000 calc(3*100%/6),#fff 0 calc(5*100%/6),#0000 0);
+    background-size: 10px 400%;
+    background-repeat: no-repeat;
+    animation: matrix 1s infinite linear;
   }
 
-  @keyframes loader-rotate {
+  @keyframes matrix {
     0% {
-      transform: rotate(90deg);
-      box-shadow:
-        0 10px 20px 0 #fff inset,
-        0 20px 30px 0 #ad5fff inset,
-        0 60px 60px 0 #471eec inset;
-    }
-    50% {
-      transform: rotate(270deg);
-      box-shadow:
-        0 10px 20px 0 #fff inset,
-        0 20px 10px 0 #d60a47 inset,
-        0 40px 60px 0 #311e80 inset;
+      background-position: 0% 100%, 50% 100%, 100% 100%
     }
     100% {
-      transform: rotate(450deg);
-      box-shadow:
-        0 10px 20px 0 #fff inset,
-        0 20px 30px 0 #ad5fff inset,
-        0 60px 60px 0 #471eec inset;
+      background-position: 0% 0%, 50% 0%, 100% 0%
     }
   }
+`;
 
-  .loader-letter {
-    display: inline-block;
-    opacity: 0.4;
-    transform: translateY(0);
-    animation: loader-letter-anim 2s infinite;
-    z-index: 1;
-    border-radius: 50ch;
-    border: none;
-  }
-
-  .loader-letter:nth-child(1) {
-    animation-delay: 0s;
-  }
-  .loader-letter:nth-child(2) {
-    animation-delay: 0.1s;
-  }
-  .loader-letter:nth-child(3) {
-    animation-delay: 0.2s;
-  }
-  .loader-letter:nth-child(4) {
-    animation-delay: 0.3s;
-  }
-  .loader-letter:nth-child(5) {
-    animation-delay: 0.4s;
-  }
-  .loader-letter:nth-child(6) {
-    animation-delay: 0.5s;
-  }
-  .loader-letter:nth-child(7) {
-    animation-delay: 0.6s;
-  }
-  .loader-letter:nth-child(8) {
-    animation-delay: 0.7s;
-  }
-  .loader-letter:nth-child(9) {
-    animation-delay: 0.8s;
-  }
-  .loader-letter:nth-child(10) {
-    animation-delay: 0.9s;
-  }
-
-  @keyframes loader-letter-anim {
-    0%,
-    100% {
-      opacity: 0.4;
-      transform: translateY(0);
-    }
-    20% {
-      opacity: 1;
-      transform: scale(1.15);
-    }
-    40% {
-      opacity: 0.7;
-      transform: translateY(0);
-    }
-  }`;
-
-export default Loader;
+export default Loading;

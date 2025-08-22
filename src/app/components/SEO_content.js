@@ -1,68 +1,68 @@
-'use client';
+import { useState } from "react";
+import { Copy, Check } from "lucide-react";
 
-import React from 'react';
-import {
-  KanbanBoard,
-  KanbanCard,
-  KanbanCards,
-  KanbanHeader,
-  KanbanProvider,
-} from '../../components/ui/kibo-ui/kanban'; 
-import { ScrollArea, ScrollBar } from '../../components/ui/scroll-area';
-import ButtonCopy from "../../components/ButtonCopy"
+function KeywordInfoBlock({ outline, intent, slug }) {
+  const [copied, setCopied] = useState(false);
 
-
-// New SEO-focused columns
-const columns = [
-  { id: 'primary', name: 'Primary Keywords' },
-  { id: 'longtail', name: 'Long-tail Variations' },
-  { id: 'intent', name: 'Search Intent Keywords' },
-];
-
-// Prefilled SEO keywords (5 rows each)
-const initialData = [
-  // Primary Keywords
-  { id: '1', name: 'AI marketing tools', column: 'primary' },
-  { id: '2', name: 'SEO software', column: 'primary' },
-  { id: '3', name: 'content automation', column: 'primary' },
-  { id: '4', name: 'digital marketing AI', column: 'primary' },
-  { id: '5', name: 'AI for startups', column: 'primary' },
-
-  // Long-tail Variations
-  { id: '6', name: 'best AI marketing tools for small business', column: 'longtail' },
-  { id: '7', name: 'AI SEO tools for content writers', column: 'longtail' },
-  { id: '8', name: 'how to use AI for social media marketing', column: 'longtail' },
-  { id: '9', name: 'affordable AI tools for digital marketing', column: 'longtail' },
-  { id: '10', name: 'AI content creation tools comparison', column: 'longtail' },
-
-  // Search Intent Keywords
-  { id: '11', name: 'what is AI in marketing', column: 'intent' },
-  { id: '12', name: 'buy AI SEO software', column: 'intent' },
-  { id: '13', name: 'AI tools for growing a business', column: 'intent' },
-  { id: '14', name: 'free AI content generator', column: 'intent' },
-  { id: '15', name: 'best AI marketing platform 2025', column: 'intent' },
-];
-
-export default function SeoPlanBoard() {
-  const [data, setData] = React.useState(initialData);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(slug);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-   <KanbanProvider columns={columns} data={data} onDataChange={setData}>
-      {(column) => (
-        <KanbanBoard key={column.id} id={column.id}>
-          <KanbanHeader>{column.name}</KanbanHeader>
+    <div className="bg-[#121212] border border-gray-800 rounded-xl p-5 space-y-6 shadow-md w-full max-w-5xl">
+      {/* Outline */}
+      <div>
+        <h3 className="text-sm text-gray-400 uppercase">Outline</h3>
+        <p className="text-gray-100 font-medium">{outline}</p>
+      </div>
 
-          {/* 👇 Each column scrolls independently */}
-          <ScrollArea className="h-[400px] pr-2">
-            <KanbanCards id={column.id}>
-              {(item) => (
-                <KanbanCard key={item.id} id={item.id} name={item.name} /> 
-              )}
-            </KanbanCards>
-            <ScrollBar orientation="vertical" />
-          </ScrollArea>
-        </KanbanBoard>
-      )}
-    </KanbanProvider>
+      {/* Search Intent */}
+      <div>
+        <h3 className="text-sm text-gray-400 uppercase">Search Intent</h3>
+        <span className="inline-block px-3 py-1 rounded-lg bg-[#1a1a1a] border border-gray-700 text-gray-200 text-sm font-medium">
+          {intent}
+        </span>
+      </div>
+
+      {/* Slug */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="text-sm text-gray-400 uppercase">Slug</h3>
+          <p className="text-gray-300">/{slug}</p>
+        </div>
+        <button
+          onClick={handleCopy}
+          className="p-2 hover:bg-[#1f1f1f] rounded-lg transition-colors"
+          title="Copy slug"
+        >
+          {copied ? (
+            <Check className="w-4 h-4 text-green-400" />
+          ) : (
+            <Copy className="w-4 h-4 text-gray-400" />
+          )}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// --- Mock Usage ---
+export default function App() {
+  const mockData = {
+    outline: "Step-by-step guide on SEO keyword research",
+    intent: "Informational",
+    slug: "seo-keyword-research-guide",
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center p-6">
+      <KeywordInfoBlock
+        outline={mockData.outline}
+        intent={mockData.intent}
+        slug={mockData.slug}
+      />
+    </div>
   );
 }

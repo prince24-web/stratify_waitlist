@@ -16,7 +16,7 @@ import {
   CodeBlockContent
 } from "../../components/ui/kibo-ui/code-block";
 
-export default function ExamplePage() {
+export default function CodeDisplay() {
   const files = [
     {
       language: "javascript",

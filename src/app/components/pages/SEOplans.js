@@ -1,10 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Copy, Edit2, Save } from "lucide-react";
-import Loader from "../Loader";
 import KeywordTable from "../CustomTable";
 import APIService from "../../../services/api";
-import ExamplePage from "../code-Block"
+import CodeDisplay from "../code-Block"
+import Loading from "../Loader"
+import KeywordInfoBlock from "../SEO_content"
 
 
 export default function SEOPlan({ persona }) {
@@ -48,7 +49,7 @@ export default function SEOPlan({ persona }) {
 
     const handleSave = () => setEditingIndex(null);
 
-    if (loading) return <Loader />;
+    if (loading) return <Loading/>;
 
     if (!metadata.length)
         return <p className="text-gray-500">No SEO plan found.</p>;
@@ -60,7 +61,8 @@ export default function SEOPlan({ persona }) {
             </h1>
             <div className="space-y-6">
            <KeywordTable/>
-           <ExamplePage/>
+            <KeywordInfoBlock/>
+           <CodeDisplay/>
             </div>
         </div>
     );
