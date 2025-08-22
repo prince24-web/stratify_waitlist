@@ -3,7 +3,6 @@ import Benefit from "./components/Benefits";
 import CalltoAction from "./components/CTA";
 import FAQ from "./components/FAQ";
 import Footer from "./components/footer";
-import Dashboard from "./components/heroilustration";
 import HowItWorks from "./components/howitworks";
 import Maquee from "./components/Maquee";
 import Navbar from "./components/navbar";

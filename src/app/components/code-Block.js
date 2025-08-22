@@ -16,7 +16,7 @@ import {
   CodeBlockContent
 } from "../../components/ui/kibo-ui/code-block";
 
-export default function ExamplePage() {
+export default function CodeDisplay() {
   const files = [
     {
       language: "javascript",
@@ -95,7 +95,7 @@ export default function Meta() {
   ];
 
   return (
-    <CodeBlock defaultValue="index.js" data={files} className="my-4">
+    <CodeBlock defaultValue="React" data={files} className="my-4">
       {/* Header */}
       <CodeBlockHeader>
         <CodeBlockFiles>
