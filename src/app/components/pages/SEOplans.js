@@ -4,9 +4,9 @@ import { Copy, Edit2, Save } from "lucide-react";
 import Loader from "../Loader";
 import KeywordTable from "../CustomTable";
 import APIService from "../../../services/api";
-import  SeoPlanBoard from "../SEO_content"
-import SeoPlanBoardDesc from "../SEO_details" 
-import ExamplePage from "../code-Block"
+import SeoPlanBoard from "../SEO_content";
+import SeoPlanBoardDesc from "../SEO_details";
+import ExamplePage from "../code-Block";
 
 export default function SEOPlan({ persona }) {
     const [loading, setLoading] = useState(false);
@@ -60,9 +60,9 @@ export default function SEOPlan({ persona }) {
                 Your SEO Plan
             </h1>
             <div className="space-y-6">
-           <SeoPlanBoard/>
-           <SeoPlanBoardDesc/>
-           <ExamplePage/>
+                <SeoPlanBoard />
+                <SeoPlanBoardDesc />
+                <ExamplePage />
             </div>
         </div>
     );
