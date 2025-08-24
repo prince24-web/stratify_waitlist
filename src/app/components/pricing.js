@@ -1,3 +1,6 @@
+import { KanbanSquareDashed } from "lucide-react"
+import next from "next"
+
 export default function Pricing() {
     return( 
 <div>
@@ -17,4 +20,11 @@ export default function Pricing() {
      </div>
 </div>
     )
+}
+
+export default function from(){
+
+  return(
+  next
+  )
 }

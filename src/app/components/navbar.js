@@ -20,7 +20,7 @@ export default function Navbar() {
     <>
       {/* Logo - Top Left */}
       <div className="fixed top-5 left-5 z-50 px-4 py-2 rounded-full backdrop-blur-lg bg-white/10 border border-white/20 text-white text-xl font-bold shadow-2xl">
-        Spark
+        Stratify
       </div>
 
       {/* Desktop Center Navigation */}

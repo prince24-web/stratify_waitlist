@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import SiriOrbDemo from "../components/orb"
 
 export default function Benefit() {
   const [expandedItem, setExpandedItem] = useState(0);
@@ -35,7 +36,7 @@ export default function Benefit() {
       <div className="w-full max-w-7xl mx-auto backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between shadow-xl gap-6">
         {/* Left: AI Illustration */}
         <div className="w-full md:w-1/2 flex items-center justify-center">
-          <div className="w-64 h-64 bg-white/10 rounded-xl border border-white/20 p-4 backdrop-blur-md flex items-center justify-center shadow-inner" />
+         <SiriOrbDemo/>
         </div>
 
         {/* Right: Content */}

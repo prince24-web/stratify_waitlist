@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Left side - logo or text */}
         <div className="text-lg font-semibold">
-          © {new Date().getFullYear()} PrepPal. All rights reserved.
+          © {new Date().getFullYear()} Stratify. All rights reserved.
         </div>
 
         {/* Right side - links */}

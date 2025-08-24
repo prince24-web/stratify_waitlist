@@ -1,15 +1,15 @@
 "use client";
 
-
-
+import { CheckCircle2 } from "lucide-react";
+import CardFlip from "../../components/kokonutui/card-flip";
 
 
 export default function WhyHeadSpark() {
   return (
     <div>
+      {/* Header */}
       <div className="z-10 text-center max-w-6xl px-4 sm:px-6 pt-12 sm:pt-16 mx-auto">
-        {/* Badge */}
-        <div className="px-4 py-2 rounded-full backdrop-blur-lg bg-white/10 border border-cyan-400/20 inline-flex items-center gap-2 mb-6 text-cyan-100 text-sm animate-pulse hover:animate-none hover:bg-cyan-400/10 transition-colors">
+        <div className="px-4 py-2 rounded-full backdrop-blur-md bg-black/20  border border-cyan-400/20 inline-flex items-center gap-2 mb-6 text-cyan-100 text-sm animate-pulse hover:animate-none hover:bg-cyan-400/10 transition-colors">
           Master Modern AI Solution
           <svg
             className="w-4 h-4 text-cyan-400"
@@ -27,53 +27,106 @@ export default function WhyHeadSpark() {
         </div>
 
         <h1 className="text-4xl sm:text-5xl font-bold mb-8 leading-tight bg-gradient-to-r from-cyan-100 to-white bg-clip-text text-transparent">
-          Why Choose HeadSpark?
+          Why Choose Stratify?
         </h1>
         <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-          Everything you need to create professional marketing strategies and
-          content that converts.
+          Stop juggling endless tools. Stratify is your all-in-one AI marketing
+          assistant — from strategy to execution.
         </p>
       </div>
 
       {/* Main Container */}
       <div className="px-4">
         <div className="w-full max-w-7xl mx-auto backdrop-blur-sm bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between min-h-[28rem] gap-6">
-          {/* Left Side */}
+          {/* Left Side - CardFlip */}
           <div className="w-full md:w-1/2 flex items-center justify-center">
-            
+            <CardFlip
+              title="Blog Post"
+              subtitle="Engaging & SEO-optimized"
+              description="Write full-length blog posts tailored to your audience."
+              features={["SEO Keywords", "Engaging Headlines", "Call-to-Actions"]}
+            />
           </div>
 
-          {/* Right Side */}
+          {/* Right Side - Feature List */}
           <div className="w-full md:w-1/2 text-white space-y-4">
             <h2 className="text-3xl font-bold">AI-Powered Content Creation</h2>
             <p className="text-sm md:text-base text-white/80">
               Generate high-quality, tailored content in seconds. Whether you're
-              a marketer, writer, or business owner, our AI tools help you save
-              time and boost productivity with minimal effort.
+              a startup founder, marketer, or business owner, Stratify gives you
+              everything you need to stay consistent and visible.
             </p>
-            <ul className="list-disc list-inside text-sm md:text-base space-y-1 text-white/70">
-              <li>Blog post generation</li>
-              <li>Product descriptions</li>
-              <li>Ad copy & social media posts</li>
-              <li>Email content & subject lines</li>
-              <li>SEO-optimized paragraphs</li>
-              <li>Summaries & rephrasing</li>
-              <li>Hashtag & caption suggestions</li>
-            </ul>
-            <button className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center gap-2">
-              Watch Demo
-              <span className="ml-1">→</span>
-            </button>
+
+            {/* Feature List */}
+            <div className="space-y-2">
+              {[
+                "Blog post & article generation",
+                "Content Calendar Generation",
+                "Ad creatives & social media posts",
+                "Tailored Marketing Strategies",
+                "SEO-optimized copy with keywords",
+                "Time-Saving Automation",
+                "Content Tone Matching",
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-2 text-white/80">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Lower Boxes */}
         <div className="flex flex-col lg:flex-row gap-6 mt-6 w-full max-w-7xl mx-auto">
-          <div className="flex-1 min-h-[24rem] backdrop-blur-sm bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 flex items-center justify-between">
-            {/* Box 1 content */}
+          {/* Box 1 */}
+          <div className="flex-1 min-h-[24rem] backdrop-blur-sm bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-4">
+                Strategy That Scales
+              </h3>
+              <p className="text-white/80 mb-4">
+                Stratify builds a tailored marketing strategy for your product
+                — including positioning, messaging, and campaign roadmap.
+              </p>
+              <div className="space-y-2">
+                {[
+                  "Competitor & trend analysis",
+                  "Target audience insights",
+                  "Go-to-market strategy",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-white/80">
+                    <CheckCircle2 className="w-5 h-5 text-green-400" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex-1 min-h-[24rem] backdrop-blur-sm bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 flex items-center justify-between">
-            {/* Box 2 content */}
+
+          {/* Box 2 */}
+          <div className="flex-1 min-h-[24rem] backdrop-blur-sm bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-4">
+                Plan & Stay Consistent
+              </h3>
+              <p className="text-white/80 mb-4">
+                Create an AI-powered content calendar that organizes your
+                publishing schedule across platforms — so you never miss a post.
+              </p>
+              <div className="space-y-2">
+                {[
+                  "Auto-generated X & LinkedIn calendar",
+                  "Ready-to-post captions & hashtags",
+                  "Drag-and-drop scheduling (coming soon)",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-white/80">
+                    <CheckCircle2 className="w-5 h-5 text-green-400" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import BentoGrid from "./components/kokonutui/bento-grid"
 
 export default function HomePage() {
   return (
+    
     <main className="relative flex flex-col items-center justify-start min-h-screen text-white overflow-x-hidden">
       <Navbar />
       <BackgroundLayer />
@@ -21,8 +22,21 @@ export default function HomePage() {
       {/* Hero Content */}
       <div className="z-10 text-center max-w-4xl px-4 sm:px-6 pt-24 sm:pt-32">
         {/* Small badge/label */}
-        <div className="px-4 py-2 rounded-full backdrop-blur-lg bg-white/10 border border-white/20 inline-flex items-center gap-2 mb-6 text-gray-200 text-sm">
-          Modern Marketing AI tool
+         <div className="px-4 py-2 rounded-full backdrop-blur-md bg-black/20  border border-cyan-400/20 inline-flex items-center gap-2 mb-6 text-cyan-100 text-sm animate-pulse hover:animate-none hover:bg-cyan-400/10 transition-colors">
+          Modern Marketing AI Tool
+          <svg
+            className="w-4 h-4 text-cyan-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+             <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            />
+          </svg>
         </div>
 
         {/* Main heading */}

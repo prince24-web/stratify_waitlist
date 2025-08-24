@@ -1,10 +1,12 @@
 'use client';
-import Image from 'next/image';
+
+import SiriOrbDemo from "../components/orb"
 
 export default function CalltoAction() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 md:px-8 py-12">
       <div className="w-full max-w-[70rem] h-[26rem] mx-auto backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 md:p-8 flex items-center justify-between shadow-2xl overflow-hidden">
+        
         {/* Text and form section */}
         <div className="text-white max-w-md space-y-5 ml-2 md:ml-8">
           <h2 className="text-3xl md:text-4xl font-bold">Take The Leap With AI</h2>
@@ -28,17 +30,8 @@ export default function CalltoAction() {
         </div>
 
         {/* AI Visual Flow Illustration */}
-        <div className="hidden md:flex w-[26rem] h-[100%] items-center justify-center relative">
-          <div className="w-full h-full rounded-2xl overflow-hidden">
-            <Image
-              src="/ai-flow-illustration.png" // make sure to save it in /public or update path
-              alt="AI Flowchart"
-              width={800}
-              height={800}
-              className="w-full h-auto object-contain"
-              priority
-            />
-          </div>
+        <div className="hidden md:flex w-[26rem] h-full items-center justify-center">
+          <SiriOrbDemo />
         </div>
       </div>
     </div>
