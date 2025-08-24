@@ -16,7 +16,7 @@ export interface ButtonCopyProps {
 }
 
 const defaultIcons = {
-  idle: <Copy size={16} />,
+  idle: <Copy size={16}/>,
   loading: <LoaderCircle size={16} className="animate-spin" />,
   success: <Check size={16} />,
 }
