@@ -4,8 +4,8 @@ import { Copy, Edit2, Save } from "lucide-react";
 import KeywordTable from "../CustomTable";
 import APIService from "../../../services/api";
 import CodeDisplay from "../code-Block";
-import Loading from "../Loader";
-import KeywordInfoBlock from "../SEO_content";
+import Loading from "../loader";
+import KeywordInfoBlock from "../SEO_content"; 
 
 import CodeDisplay from "../code-Block";
 import KeywordInfoBlock from "../SEO_content";
