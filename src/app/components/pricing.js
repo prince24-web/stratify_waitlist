@@ -21,10 +21,3 @@ export default function Pricing() {
 </div>
     )
 }
-
-export default function from(){
-
-  return(
-  next
-  )
-}
