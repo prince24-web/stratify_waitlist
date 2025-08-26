@@ -9,10 +9,10 @@ export default function WhyHeadSpark() {
     <div>
       {/* Header */}
       <div className="z-10 text-center max-w-6xl px-4 sm:px-6 pt-12 sm:pt-16 mx-auto">
-        <div className="px-4 py-2 rounded-full backdrop-blur-md bg-black/20  border border-cyan-400/20 inline-flex items-center gap-2 mb-6 text-cyan-100 text-sm animate-pulse hover:animate-none hover:bg-cyan-400/10 transition-colors">
+        <div className="px-4 py-2 rounded-full backdrop-blur-lg bg-white/10 border border-blue-400/20 inline-flex items-center gap-2 mb-6 text-blue-100 text-sm animate-pulse hover:animate-none hover:bg-blue-400/10 transition-colors mx-auto md:mx-0">
           Master Modern AI Solution
           <svg
-            className="w-4 h-4 text-cyan-400"
+            className="w-4 h-4 text-blue-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -25,6 +25,7 @@ export default function WhyHeadSpark() {
             />
           </svg>
         </div>
+
 
         <h1 className="text-4xl sm:text-5xl font-bold mb-8 leading-tight bg-gradient-to-r from-cyan-100 to-white bg-clip-text text-transparent">
           Why Choose Stratify?

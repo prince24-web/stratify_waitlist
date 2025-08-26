@@ -4,7 +4,7 @@ import SiriOrbDemo from "../components/orb"
 
 export default function CalltoAction() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 md:px-8 py-12">
+    <div className="flex items-center justify-center px-4 md:px-8 py-8 md:py-12">
       <div className="w-full max-w-[70rem] h-[26rem] mx-auto backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 md:p-8 flex items-center justify-between shadow-2xl overflow-hidden">
         
         {/* Text and form section */}

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
-import SiriOrbDemo from "../components/orb"
+import SiriOrbDemo from "../components/orb";
 
 export default function Benefit() {
   const [expandedItem, setExpandedItem] = useState(0);
@@ -33,26 +33,39 @@ export default function Benefit() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8">
-      <div className="w-full max-w-7xl mx-auto backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between shadow-xl gap-6">
+      <div className="w-full max-w-7xl mx-auto backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center md:items-start justify-between shadow-xl gap-8">
+        
         {/* Left: AI Illustration */}
-        <div className="w-full md:w-1/2 flex items-center justify-center">
-         <SiriOrbDemo/>
-        </div>
+      <div className="w-full md:w-1/2 flex items-center justify-center self-center mb-6 md:mb-0">
+      <SiriOrbDemo />
+      </div>
+
 
         {/* Right: Content */}
-        <div className="w-full md:w-1/2 text-white space-y-4">
-          <div className="px-4 py-2 rounded-full backdrop-blur-lg bg-white/10 border border-cyan-400/20 inline-flex items-center gap-2 mb-6 text-cyan-100 text-sm animate-pulse hover:animate-none hover:bg-cyan-400/10 transition-colors">
+        <div className="w-full md:w-1/2 text-white space-y-4 text-center md:text-left">
+         <div className="px-4 py-2 rounded-full backdrop-blur-lg bg-white/10 border border-blue-400/20 inline-flex items-center gap-2 mb-6 text-blue-100 text-sm animate-pulse hover:animate-none hover:bg-blue-400/10 transition-colors mx-auto md:mx-0">
             Master Modern AI Solution
-            <svg className="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold mb-6">
-            Powerful Features to <br /> Boost Your Business
+
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+            Powerful Features to <br className="hidden sm:block" /> Boost Your Business
           </h2>
 
           {/* Expandable Features List */}
-          <div className="space-y-0 max-h-64 overflow-y-auto pr-2">
+          <div className="space-y-0 max-h-72 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
             {features.map((feature, index) => (
               <div key={feature.id} className="border-b border-white/10 last:border-b-0">
                 <div
