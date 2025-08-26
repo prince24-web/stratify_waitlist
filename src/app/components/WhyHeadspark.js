@@ -52,7 +52,7 @@ export default function WhyHeadSpark() {
           <div className="w-full md:w-1/2 text-white space-y-4">
             <h2 className="text-3xl font-bold">AI-Powered Content Creation</h2>
             <p className="text-sm md:text-base text-white/80">
-              Generate high-quality, tailored content in seconds. Whether you're
+              Generate high-quality, tailored content in seconds. Whether you&apos;re
               a startup founder, marketer, or business owner, Stratify gives you
               everything you need to stay consistent and visible.
             </p>

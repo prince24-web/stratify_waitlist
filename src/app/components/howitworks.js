@@ -25,7 +25,7 @@ export default function HowItWorks() {
           </div>
           <h3 className="text-xl font-semibold mb-3 bg-gradient-to-r from-cyan-50 to-white bg-clip-text text-transparent">Describe Your Product</h3>
           <p className="text-sm text-white/80 group-hover:text-white transition-colors">
-            Simply input your product or service description - that's all we need to get started.
+            Simply input your product or service description - that&apos;s all we need to get started.
           </p>
         </div>
         
