@@ -7,53 +7,47 @@ export default function PricingTable() {
 
   const plans = [
     {
-      name: "Free Plan",
-      subtitle: "Get Started at No Cost",
-      price: isYearly ? 0 : 0,
+      name: "Free",
+      subtitle: "Try Stratify at no cost",
+      price: 0,
       period: isYearly ? "/year" : "/month",
       features: [
-        { text: "Basic Reports (Limited Metrics)", included: true },
-        { text: "1 Campaign/Month", included: true },
-        { text: "Basic (Up to 500 Contacts)", included: true },
-        { text: "Community Forum Support", included: true },
-        { text: "1 User", included: true },
-        { text: "Trend Prediction", included: false }
+        { text: "Access to all features (except Content Calendar)", included: true },
+        { text: "Try each feature only once", included: true },
       ],
       buttonText: "Sign Up Free",
       buttonStyle: "border border-gray-600 text-white hover:bg-gray-800",
       popular: false
     },
     {
-      name: "Pro Plan",
-      subtitle: "Scale Your Marketing",
-      price: isYearly ? 490 : 49,
+      name: "Pro",
+      subtitle: "For startups & indie creators",
+      // $20/mo → $240/yr, with 25% off → $180/yr
+      price: isYearly ? 180 : 20,
       period: isYearly ? "/year" : "/month",
       features: [
-        { text: "Advanced Reports + Real-Time", included: true },
-        { text: "Up to 10 Campaigns/Month", included: true },
-        { text: "Enhanced (Up to 5,000 Contacts)", included: true },
-        { text: "Email Support (48-Hour Response)", included: true },
-        { text: "Up to 5 Users", included: true },
-        { text: "Trend Prediction Included", included: true }
+        { text: "Up to 15 Product Personas", included: true },
+        { text: "Up to 250 Credits", included: true },
+        { text: "All features unlocked", included: true },
       ],
-      buttonText: "Start Pro Trial",
+      buttonText: "Start Pro",
       buttonStyle: "bg-blue-500 text-white hover:bg-blue-600",
       popular: true
     },
     {
-      name: "Professional Plan",
-      subtitle: "Dominate Your Market",
-      price: isYearly ? 1990 : 199,
+      name: "Business",
+      subtitle: "For teams & scaling businesses",
+      // $50/mo → $600/yr, with 25% off → $450/yr
+      price: isYearly ? 450 : 50,
       period: isYearly ? "/year" : "/month",
       features: [
-        { text: "Full Analytics + Custom Dashboards", included: true },
-        { text: "Unlimited Campaigns", included: true },
-        { text: "Advanced (Unlimited Contacts)", included: true },
-        { text: "24/7 Priority Phone + Chat", included: true },
-        { text: "Unlimited Users", included: true },
-        { text: "Included + Custom Forecasts", included: true }
+        { text: "Unlimited Product Personas (Fair Use)", included: true },
+        { text: "Unlimited Credits (Fair Use)", included: true },
+        { text: "All features unlocked", included: true },
+        { text: "Priority Support", included: true },
+        { text: "Exclusive Community (coming soon)", included: true },
       ],
-      buttonText: "Get Professional",
+      buttonText: "Get Business",
       buttonStyle: "border border-gray-600 text-white hover:bg-gray-800",
       popular: false
     }
@@ -83,14 +77,14 @@ export default function PricingTable() {
                   : 'text-gray-400 hover:text-white'
               }`}
             >
-              Yearly
+              Yearly <span className="ml-1 text-green-400">(Save 25%)</span>
             </button>
           </div>
         </div>
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
+          {plans.map((plan) => (
             <div
               key={plan.name}
               className={`relative bg-black/20 backdrop-blur-md rounded-2xl border border-white/10 p-8 transition-all duration-300 hover:bg-black/30 hover:border-white/20 ${
