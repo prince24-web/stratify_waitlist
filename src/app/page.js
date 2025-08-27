@@ -49,16 +49,6 @@ export default function HomePage() {
         <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto px-2 sm:px-0">
           Transform your product description into comprehensive marketing strategies and cross-platform content with our AI agent.
         </p>
-
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-          <button className="w-full sm:w-auto bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 rounded-full font-medium transition-colors">
-            Get Started Free Trial
-          </button>
-          <button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center justify-center gap-2">
-            Watch Demo <span className="ml-1">→</span>
-          </button>
-        </div>
       </div>
 
       {/* Dashboard Illustration */}

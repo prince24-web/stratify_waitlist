@@ -7,9 +7,9 @@ import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Features', href: '#' },
-  { label: 'Pricing', href: '#' },
-  { label: 'Contact', href: '#' },
+  { label: 'Features', href: '/features' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -46,22 +46,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Desktop Buttons - Top Right */}
-      <div className="hidden md:flex fixed top-5 right-5 z-50 gap-4">
-        <Link
-          href="/signin"
-          className="backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl px-4 py-2 rounded-full text-white hover:bg-white/20 transition"
-        >
-          Sign In
-        </Link>
-        <Link
-          href="/signup"
-          className="backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl px-4 py-2 rounded-full text-white hover:bg-white/20 transition"
-        >
-          Get Started
-        </Link>
-      </div>
-
       {/* Mobile Hamburger Icon - Top Right */}
       <div className="md:hidden fixed top-5 right-5 z-50">
         <button
@@ -85,25 +69,8 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <div className="flex gap-4 mt-6">
-            <Link
-              href="/signin"
-              className="px-4 py-2 border border-white/30 rounded-full bg-white/10 hover:bg-white/20"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/signup"
-              className="px-4 py-2 border border-white/30 rounded-full bg-white/10 hover:bg-white/20"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Get Started
-            </Link>
-          </div>
         </div>
       )}
     </>
   );
 }
-
