@@ -3,6 +3,8 @@
 import { useState } from "react";
 import SiriOrbDemo from "../components/orb";
 import { createClient } from "@supabase/supabase-js";
+import { supabase } from "../../lib/supabaseClient"
+
 
 // ✅ Make sure env vars are loaded
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
